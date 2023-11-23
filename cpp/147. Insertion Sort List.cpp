@@ -41,7 +41,7 @@ public:
 
     ListNode* insertionSortList(ListNode* head) {
         if(head == NULL || head->next == NULL)
-			return NULL;
+			return head;
 		ListNode* current, *temp;
 		
 		current =  head->next;
