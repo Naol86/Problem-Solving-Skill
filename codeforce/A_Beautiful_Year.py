@@ -1,16 +1,12 @@
-x = input()
-lis = [int(i) for i in x]
-x = int(x)
-temp = x
-check = True
-while check:
-    temp +=1
-    temp_lis = []
-    for i in str(temp):
-        if i in temp_lis:
+x = int(input())
+while True:
+    x +=1
+    temp_dic = {}
+    for i in str(x):
+        if i in temp_dic:
             break
         else:
-            temp_lis.append(i)
-    if len(temp_lis) == 4:
-        print(temp)
+            temp_dic[i] = 0
+    if len(temp_dic) == 4:
+        print(x)
         break
