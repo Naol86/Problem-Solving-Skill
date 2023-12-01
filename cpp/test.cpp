@@ -1,30 +1,18 @@
 #include <iostream>
+#include <unordered_map>
+#include <set>
 
 using namespace std;
-
-struct Node
-{
-	int val;
-	Node* next;
-	Node() : val(0), next(NULL) {}
-	Node(int x) : val(x), next(NULL) {}
-	Node(int x, Node* next) : val(x), next(next) {}
-};
-
-void print(Node* head)
-{
-	while(head){
-		cout<<head->val<<endl;
-		head = head->next;
-	}
-}
 
 
 int main()
 {
-	Node *temp= new Node(23);
-	temp = new Node(43,temp);
-	// temp->val = 12;
-	// temp->next = NULL;
-	print(temp);
+	unordered_map<string, int> lis;
+	lis["one"] = 1;
+	lis["two"] = 2;
+	lis["three"] = 3;
+	set<int> lis2 = {1,2,7,3,4,5,3,2};
+	for(auto i : lis2){
+		cout<<i<<endl;
+	}
 }
