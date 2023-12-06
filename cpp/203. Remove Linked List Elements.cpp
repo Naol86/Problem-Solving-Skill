@@ -14,7 +14,7 @@ struct ListNode {
 class Solution {
 public:
     ListNode* removeElements(ListNode* head, int val) {
-        if( head == NULL || head->next == NULL)
+        if(head == NULL)
 			return head;
 		if (head->val == val)
 			return removeElements(head->next, val);
