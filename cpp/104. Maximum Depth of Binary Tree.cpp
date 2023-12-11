@@ -18,7 +18,10 @@ public:
 		if(head == NULL)
 			return n;
 		int _max;
-		_max = find(head->left,n+1) > find(head->left,n+1) ? find(head->left,n+1) : find(head->left,n+1);
+        int one,two;
+        one = find(head->left,n+1);
+        two = find(head->right,n+1);
+		_max = one > two ? one : two;
 		return _max;
 	}
 	int maxDepth(TreeNode* root) {
