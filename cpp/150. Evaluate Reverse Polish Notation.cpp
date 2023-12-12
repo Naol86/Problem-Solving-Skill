@@ -64,10 +64,3 @@ public:
         return temp.top();
     }
 };
-
-int main()
-{
-	Solution test;
-	string a = "-";
-	cout<<test.convert(a)<<endl;
-}
