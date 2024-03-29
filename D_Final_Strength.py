@@ -1,5 +1,4 @@
 import bisect
-from copy import deepcopy
 
 inputs = []
 for _ in range(int(input())):
@@ -11,7 +10,6 @@ for x, nums in inputs:
     for i in range(2 ** x):
         nums[i] = [nums[i], i]
     ans = nums
-    # print(nums)
     def merge(lis1, lis2):
         ans = []
         left = 0
@@ -33,15 +31,13 @@ for x, nums in inputs:
         mid = left + (right - left) // 2
         left_half = divide(left, mid)
         right_half = divide(mid + 1, right)
-        # print(left_half, right_half)
-        # temp = deepcopy(left_half)
         temp = [i[0] for i in left_half]
+        temp2 = [i[0] for i in right_half]
         for i in left_half:
-            pos = bisect.bisect_left(right_half,i[0])
+            pos = bisect.bisect_left(temp2,i[0])
             ans[i[1]][0] += pos
         for i in right_half:
-            pos = bisect.bisect_left(temp,[i[0], float('-inf')])
-            # print(i, pos, left_half)
+            pos = bisect.bisect_left(temp,i[0])
             ans[i[1]][0] += pos
         return merge(left_half, right_half)
     divide(0, 2 ** x - 1)

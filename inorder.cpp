@@ -21,6 +21,24 @@ void inorder(Tree *root) {
     inorder(root->right);
 }
 
+void preorder(Tree *root) {
+    if (root == NULL) {
+        return;
+    }
+    cout << root->data << " ";
+    preorder(root->left);
+    preorder(root->right);
+}
+
+void postorder(Tree *root) {
+    if (root == NULL) {
+        return;
+    }
+    postorder(root->left);
+    postorder(root->right);
+    cout << root->data << " ";
+}
+
 
 int main(){
     // Constructing a binary tree
@@ -47,5 +65,7 @@ int main(){
 
     // Calling the inorder function
     inorder(root);
+
+    
     return 0;
 }
