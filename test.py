@@ -1,14 +1,9 @@
-from collections import deque
+from functools import lru_cache
 
-queue = deque()
+@lru_cache(maxsize=3)
+def fibo(a):
+  if a < 2:
+    return a
+  return fibo(a - 1) + fibo(a-2)
 
-queue.append('naol')
-queue.append('samuel')
-
-print(queue.popleft())
-queue.append('abdu')
-
-print(queue[0])
-
-print(queue.popleft())
-
+print(fibo(100))

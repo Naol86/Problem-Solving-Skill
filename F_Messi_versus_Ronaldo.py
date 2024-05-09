@@ -21,12 +21,6 @@ for _ in range(int(input())):
 
       # or
       if num & 1 or bits[i] > 0:
-        # temp = (1<<i)
-        # if num & 1:
-        #   temp *= x
-        # _or += temp
-        
-        # if bit is set 
         if num & 1:
           _or += (1 << i) * x
         else:
