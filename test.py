@@ -1,9 +1,15 @@
-from functools import lru_cache
+import sys, threading
 
-@lru_cache(maxsize=3)
-def fibo(a):
-  if a < 2:
-    return a
-  return fibo(a - 1) + fibo(a-2)
 
-print(fibo(100))
+def main():
+    # write your solution here
+    pass
+    
+if __name__ == '__main__':
+    
+    sys.setrecursionlimit(1 << 30)
+    threading.stack_size(1 << 27)
+
+    main_thread = threading.Thread(target=main)
+    main_thread.start()
+    main_thread.join()
