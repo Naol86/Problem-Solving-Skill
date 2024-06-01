@@ -1,15 +1,17 @@
-import sys, threading
-
-
-def main():
-    # write your solution here
-    pass
-    
-if __name__ == '__main__':
-    
-    sys.setrecursionlimit(1 << 30)
-    threading.stack_size(1 << 27)
-
-    main_thread = threading.Thread(target=main)
-    main_thread.start()
-    main_thread.join()
+def compute_lps(pattern):
+    lps = [0] * len(pattern)
+    length = 0
+    i = 1
+    while i < len(pattern):
+        if pattern[i] == pattern[length]:
+            length += 1
+            lps[i] = length
+            i += 1
+        else:
+            if length != 0:
+                length = lps[length - 1]
+            else:
+                lps[i] = 0
+                i += 1
+    return lps
+print(compute_lps('ababcab'))
