@@ -1,17 +1,14 @@
-x, y = map(int, input().split())
+a, n = map(int, input().split())
 nums = [int(i) for i in input().split()]
 
-left = 0
-right = 0
+left = right = 0
 _sum = 0
-ans = 0
-while right < x:
-  _sum += nums[right]
-  if _sum > y:
-    _sum -= nums[left] + nums[right]
+_max = 0
+while right < a:
+  while _sum + nums[right] > n:
+    _sum -= nums[left]
     left += 1
-  else:
-    ans = max(ans, right - left + 1)
-    right += 1
-
-print(ans)
+  _sum += nums[right]
+  right += 1
+  _max = max(_max, right - left)
+print(_max)
