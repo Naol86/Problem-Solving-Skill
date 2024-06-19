@@ -1,26 +1,18 @@
-# def compute_lps(pattern):
-#     lps = [0] * len(pattern)
-#     length = 0
-#     i = 1
-#     while i < len(pattern):
-#         if pattern[i] == pattern[length]:
-#             length += 1
-#             lps[i] = length
-#             i += 1
-#         else:
-#             if length != 0:
-#                 length = lps[length - 1]
-#             else:
-#                 lps[i] = 0
-#                 i += 1
-#     return lps
-# print(compute_lps('ababcab'))
+worker = [2,4,6,8,9,10]
+pro = [3,4,7,9,10,11]
 
-import random
+lower = 0
+upper = 0
 
+_max = 0
 
-lis = []
-for _ in range(1000):
-    x = random.randint(1, 200)
-    lis.append(x)
-print(lis)
+# while lower < len(pro):
+for lower in range(len(pro)):
+    while upper < len(worker):
+        if worker[upper] <= pro[lower]:
+            upper += 1
+        else:
+            break
+    print(pro[lower],"will work on",worker[upper-1])
+    _max = max(_max, profit[upper-1])
+    ans += _max
