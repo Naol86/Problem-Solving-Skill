@@ -1,34 +1,35 @@
-class solution:
-  def find(self,x):
-    if x == self.dic[x]:
-      return x
-    self.dic[x] = self.find(self.dic[x])
-    return self.dic[x]
-  def union(self,x,y):
-    xp = self.find(x)
-    yp = self.find(y)
-    if xp == yp:
-      return
-    if self.size[xp] < self.size[yp]:
-      xp,yp = yp,xp
-    self.dic[yp] = xp
-    self.size[xp] += self.size[yp]
-  def solve(self,n,m):
-    self.dic = {x:x for x in range(1,n+1)}
-    self.size = {x:1 for x in range(1,n+1)}
-    for _ in range(m):
-      x,y = map(int,input().split())
-      self.union(x,y)
-    for key in self.dic:
-      self.find(key)
-    xp = self.dic[1]
-    yp = self.dic[n]
-    if xp == yp:
-      print("YES")
-    else:
-      print("NO")
-obj = solution()
+def solve(n):
+  s = input()
+  stack = []
+  for i in range(len(s)):
+    while(stack and stack[-1][0] < s[i]):
+      stack.pop()
+    stack.append([s[i],i])
+  right = len(stack)-1
+  left = 0
+  while(left < right):
+    stack[left][0],stack[right][0] = stack[right][0],stack[left][0]
+    right -= 1
+    left += 1
+  s = list(s)
+  for x,y in stack:
+    s[y] = x
+  minus = 0
+  right = len(stack)-2
+  while(right >= 0):
+    if stack[right][0] != stack[right+1][0]:
+      break
+    minus += 1
+    right -= 1
+  # print(stack,"==")
+  for x in range(1,len(s)):
+    if s[x]  < s[x-1]:
+      return -1
+  ans = len(stack)-1
+  ans -= minus
+  return ans
 t = int(input())
 for _ in range(t):
-  n,m = map(int,input().split())
-  obj.solve(n,m)
+  n = int(input())
+  ans = solve(n)
+  print(ans)

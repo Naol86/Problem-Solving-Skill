@@ -1,27 +1,18 @@
-from collections import defaultdict, deque
-
-
-n, m = map(int, input().split())
-nodes = defaultdict(list)
-in_degree = defaultdict(int)
-
-for _ in range(m):
-  a, b = input().split()
-  nodes[a].append(b)
-  in_degree[b] += 1
-queue = deque()
-for key in nodes:
-  if in_degree[key] == 0:
-    queue.append(key)
-ans = []
-while queue:
-  course = queue.popleft()
-  ans.append(course)
-  for node in nodes[course]:
-    in_degree[node] -= 1
-    if in_degree[node] == 0:
-      queue.append(node)
-if len(ans) != n:
-  print("IMPOSSIBLE")
-else:
-  print(*ans)
+for _ in range(int(input())):
+  x = int(input())
+  s = [i for i in input()]
+  if x == 1:
+    print(s[0])
+    continue
+  temp = s[1:]
+  temp.sort()
+  # print(temp)
+  if temp[0] > s[0]:
+    print(''.join(s))
+  else:
+    for i in range(x - 1, 0, -1):
+      if s[i] == temp[0]:
+        s[i] = ""
+        break
+    print(f"{temp[0]}{''.join(s)}")
+  # print(temp)
